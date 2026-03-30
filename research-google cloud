@@ -1,0 +1,32 @@
+##Google CloudおよびAWSでは、プライベートPKI（公開鍵基盤）をクラウド上で簡単に構築・管理できる専用のフルマネージドサービスが提供されています。これらを利用することで、ルート認証局の管理、証明書の発行・失効・更新作業を自動化し、安全な内部通信環境を短時間で構築できます##
+
+#1. Google Cloud: Certificate Authority Service (CAS)
+Google Cloud CAS とは？最先端の認証局サービスをあらゆる観点から ...
+Google Cloudの「Certificate Authority Service」は、プライベートCA（認証局）を高度に自動化された形で運用できるサービスです。 
+Google Cloud
+
+##特徴:##
+フルマネージド: インフラの管理や高可用性の設計が不要。
+自動化とスケーラビリティ: 大規模な証明書の発行や、コンテナ/サービスメッシュ（Istioなど）との連携が得意。
+信頼性: Googleのグローバルインフラを基盤としており、堅牢なセキュリティ。
+ユースケース: Kubernetesやマイクロサービス環境、IoTデバイスの認証。 
+
+
+#2. AWS: AWS Private Certificate Authority (Private CA) 
+AWS Private Certificate Authority と ALB でクライアント証明書認証 ...
+AWSの「AWS Private Certificate Authority」は、AWSリソースやオンプレミス環境向けのプライベートCAを構築できるマネージドサービスです。 
+
+##特徴:
+#容易な証明書ライフサイクル管理: AWS Certificate Manager (ACM) と統合し、証明書の発行、更新、配布を自動化可能。
+
+#他のAWSサービスとの統合: ALB（Application Load Balancer）、CloudFront、API Gatewayなどで使用するプライベート証明書を容易に適用可能。
+ハイブリッド対応: VPNやDirect Connectを介して、オンプレミス環境のデバイスにも証明書を発行できる。
+ユースケース: AWS上のWebアプリケーション、VPNアクセス、デバイス認証。 
+
+##比較と選び方#
+#特徴 	AWS Private CA	Google Cloud CAS
+強み	AWSサービスとの密接な連携、ハイブリッド環境	Kubernetes、コンテナ、自動化、スケーラビリティ
+
+#主な利用者	AWS中心のインフラ	Google Cloud/GKE利用、モダンなアプリ開発
+コスト	CAごとの固定費＋証明書毎の従量課金	プライベートCA数＋発行された証明書の数
+どちらも、OpenSSLなどを用いた手動でのCA構築・管理の手間（キーの保管、失効リストの管理など）を大幅に削減し、セキュリティを高めるための有効なソリューションです
